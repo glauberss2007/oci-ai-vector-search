@@ -4,4 +4,4 @@ create user glauber identified by 123
 default tablespace users
 quota UNLIMITED on users;
 
-grant SYSDBA to glauber;
+grant db_developer_role to glauber;

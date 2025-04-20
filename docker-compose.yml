@@ -6,7 +6,7 @@ services:
     ports:
       - "1521:1521"
     environment:
-      - ORACLE_PASSWORD=123
+      - ORACLE_PWD=123
     volumes:
       - oracle-data:/opt/oracle/oradata # Path for persistent data
 volumes:
