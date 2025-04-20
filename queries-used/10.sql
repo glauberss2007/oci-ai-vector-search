@@ -49,11 +49,15 @@ select color, count(color) from vt2 group by color;
 -- Seleciona id, vsize, shape, color e a distância euclidiana a partir de um vetor, filtrando por id e limitando a 3 resultados
 select id, vsize, shape, color, to_number(vector_distance(vector('[16,3]'),v,euclidean)) distance from vt2 where id > 30 and id < 40 order by vector_distance(vector('[16,3]'),v,euclidean) fetch first 3 rows only;
 
--- Seleciona id, vsize, shape, color e v da tabela vt2, ordenado pela distância euclidiana a partir de um vetor, limitando a 10 resultados
-select id, vsize, shape, color, v from vt2 order by vector_distance(VECTOR('[6,8]'),v,euclidean) fetch first 10 rows only;
-
--- Seleciona id, vsize, shape, color e v da tabela vt2 onde a cor é 'Red', ordenado pela distância euclidiana
+-- Seleciona id, vsize, shape, color e v da tabela vt2 onde a cor é 'Red', ordenado pela distância euclidiana, limitando a 10 resultados
 select id, vsize, shape, color, v from vt2 where color = 'Red' order by vector_distance(VECTOR('[6,8]'),v,euclidean) fetch first 10 rows only;
 
--- Seleciona id, vsize, shape, color e v da tabela vt2 onde a cor é 'Red' e a forma é 'Oval', ordenado pela distância euclidiana
-select id, vsize, shape, color, v from vt2 where color = 'Red' and shape = 'Oval' order by vector_distance(VECTOR('[6,8]'),v,euclidean) fetch first
+-- Seleciona id, vsize, shape, color e v da tabela vt2 onde a cor é 'Red' e a forma é 'Oval', ordenado pela distância euclidiana, limitando a 10 resultados
+select id, vsize, shape, color, v from vt2 where color = 'Red' and shape = 'Oval' order by vector_distance(VECTOR('[6,8]'),v,euclidean) fetch first 10 rows only;
+
+-- Seleciona id, vsize, shape, color e v da tabela vt2 onde a cor é 'Red', a forma é 'Oval' e o tamanho é 'Small', ordenado pela distância euclidiana, limitando a 10 resultados
+select id, vsize, shape, color, v from vt2 where color = 'Red' and shape = 'Oval' and vsize = 'Small' order by vector_distance(VECTOR('[6,8]'),v,euclidean) fetch first 10 rows only;
+
+-- Seleciona id, vsize, shape, color e v da tabela vt2 onde a cor é 'Red', a forma é 'Oval', o tamanho é 'Small' e o id é maior que 10, ordenado pela distância euclidiana, limitando a 10 resultados
+select id, vsize, shape, color, v from vt2 where color = 'Red' and shape = 'Oval' and vsize = 'Small' and id > 10 order by vector_distance(VECTOR('[6,8]'),v,euclidean) fetch first 10 rows only;
+
